@@ -1,0 +1,73 @@
+body {
+   color: #66bfbf;
+   font-family: "Lexend Deca", sans-serif;
+}
+h1 {
+   margin-right: 100px;
+}
+form {
+   border: none;
+   border-radius: 15px;
+   margin-top: 10px;
+   position: relative;
+   top: 10px;
+}
+i {
+    color: #66bfbf;
+}
+
+ul {
+   list-style: none;
+}
+p {
+   font-size: 20px;
+}
+a {
+   color: #fadba3;
+   text-decoration: none;
+}
+.container {
+   background: #eaf6f6;
+   border: solid 8px #407088;
+   border-radius: 20px;
+   box-shadow: 5px 3px 10px 3px rgba(100, 29, 44, 0.3);
+   margin-top: 50px;
+   max-width: 800px;
+   padding: 30px;
+}
+.today {
+   text-align: center;
+   margin: 15px;
+}
+.button {
+   background: #fadba3;
+   border: none;
+   border-radius: 10px;
+   color: white;
+   padding: 5px 10px;
+   transition: 200ms ease-in-out;
+}
+.button:hover {
+   background: white;
+   border: solid 1px #f67280;
+   color: #f67280;
+}
+.main-icon {
+   text-align: center;
+}
+.forecast {
+   margin: 0 auto;
+   text-align: center;
+   max-width: 400px;
+}
+#current-location {
+   padding: 5px 10px;
+}
+
+
+/* old css
+background: radial-gradient(
+      circle at 10% 20%,
+      rgb(255, 214, 171) 0%,
+      rgb(255, 182, 182) 90%
+   );
