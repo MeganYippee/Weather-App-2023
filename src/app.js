@@ -50,25 +50,25 @@ time.innerHTML = `${hour}:${minute}`;
 
 //Weather API
 function searchWeather(response) {
-   document.querySelector("h1").innerHTML = response.data.name;
-   let tempResponse = Math.round(response.data.main.temp);
+   document.querySelector("h1").innerHTML = response.data.city;
+   let tempResponse = Math.round(response.data.temperature.current);
    let nowTemp = document.querySelector("#now-temp");
    document.querySelector("#humidity").innerHTML = Math.round(
-      response.data.main.humidity
+      response.data.temperature.humidity
    );
    document.querySelector("#wind-speed").innerHTML = Math.round(
       response.data.wind.speed
    );
    document.querySelector("#description").innerHTML =
-      response.data.weather[0].main;
+      response.data.condition.description;
    nowTemp.innerHTML = tempResponse;
 }
 
 function search(city) {
-   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
-   let apiKey = `470aa61ab9ebbd285a627fd48717a81b`;
+   let apiUrl = `https://api.shecodes.io/weather/v1/current?`;
+   let apiKey = `c4e498a3faf187722534t4baf80f1o62`;
    axios
-      .get(`${apiUrl}q=${city}&appid=${apiKey}&units=imperial`)
+      .get(`${apiUrl}query=${city}&key=${apiKey}&units=imperial`)
       .then(searchWeather);
 }
 function handleSubmit(event) {
@@ -85,10 +85,10 @@ cityForm.addEventListener("submit", handleSubmit);
 function currentGeo(position) {
    let lat = position.coords.latitude;
    let lon = position.coords.longitude;
-   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
-   let apiKey = `470aa61ab9ebbd285a627fd48717a81b`;
+   let apiUrl = `https://api.shecodes.io/weather/v1/current?`;
+   let apiKey = `c4e498a3faf187722534t4baf80f1o62`;
    axios
-      .get(`${apiUrl}lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`)
+      .get(`${apiUrl}&lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`)
       .then(searchWeather);
 }
 function activateGeo(event) {
@@ -99,7 +99,7 @@ function activateGeo(event) {
 let currentButton = document.querySelector("#current-location");
 currentButton = currentButton.addEventListener("click", activateGeo);
 
-search("San Diego");
+search("San-Diego");
 //
 
 //Temp conversion cel to fah
