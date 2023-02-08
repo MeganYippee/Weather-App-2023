@@ -24,7 +24,7 @@ p {
    font-size: 20px;
 }
 a {
-   color: #fadba3;
+   color: #facc78;
    text-decoration: none;
 }
 .container {
@@ -41,7 +41,7 @@ a {
    margin: 15px;
 }
 .button {
-   background: #fadba3;
+   background: #facc78;
    border: none;
    border-radius: 10px;
    color: white;
@@ -49,9 +49,9 @@ a {
    transition: 200ms ease-in-out;
 }
 .button:hover {
-   background: white;
-   border: solid 1px #f67280;
-   color: #f67280;
+   background: #fae8ff;
+   border: solid 1px #ffae18;
+   color: #ffae18;
 }
 .main-icon {
    text-align: center;
