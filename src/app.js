@@ -50,7 +50,6 @@ time.innerHTML = `${hour}:${minute}`;
 
 //Weather API
 function searchWeather(response) {
-   console.log(response);
    let tempResponse = Math.round(response.data.temperature.current);
    let nowTemp = document.querySelector("#now-temp");
    let icon = document.querySelector("#now-icon");
