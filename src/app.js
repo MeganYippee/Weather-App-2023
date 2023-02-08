@@ -50,9 +50,11 @@ time.innerHTML = `${hour}:${minute}`;
 
 //Weather API
 function searchWeather(response) {
-   document.querySelector("h1").innerHTML = response.data.city;
+   console.log(response);
    let tempResponse = Math.round(response.data.temperature.current);
    let nowTemp = document.querySelector("#now-temp");
+   let icon = document.querySelector("#now-icon");
+   document.querySelector("h1").innerHTML = response.data.city;
    document.querySelector("#humidity").innerHTML = Math.round(
       response.data.temperature.humidity
    );
@@ -62,6 +64,11 @@ function searchWeather(response) {
    document.querySelector("#description").innerHTML =
       response.data.condition.description;
    nowTemp.innerHTML = tempResponse;
+   icon.setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+   );
+   icon.setAttribute("alt", response.data.condition.icon);
 }
 
 function search(city) {
