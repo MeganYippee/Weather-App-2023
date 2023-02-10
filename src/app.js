@@ -53,6 +53,9 @@ function searchWeather(response) {
    let tempResponse = Math.round(response.data.temperature.current);
    let nowTemp = document.querySelector("#now-temp");
    let icon = document.querySelector("#now-icon");
+
+   fahrenheitTemp = response.data.temperature.current;
+
    document.querySelector("h1").innerHTML = response.data.city;
    document.querySelector("#humidity").innerHTML = Math.round(
       response.data.temperature.humidity
@@ -105,24 +108,32 @@ function activateGeo(event) {
 let currentButton = document.querySelector("#current-location");
 currentButton = currentButton.addEventListener("click", activateGeo);
 
-search("San-Diego");
 //
 
 //Temp conversion cel to fah
 function celConversion(event) {
    event.preventDefault();
-   let temperature = nowTemp.innerHTML;
-   nowTemp.innerHTML = Math.round((temperature - 32) * (5 / 9));
+   celcius.classList.add("active");
+   fahrenheit.classList.remove("active");
+   let nowTemp = document.querySelector("#now-temp");
+   let celciusTemp = (fahrenheitTemp - 32) * (5 / 9);
+
+   nowTemp.innerHTML = Math.round(celciusTemp);
 }
 
 function fahConversion(event) {
    event.preventDefault();
-   let temperature = nowTemp.innerHTML;
-   nowTemp.innerHTML = Math.round((temperature - 32) * (5 / 9));
+   celcius.classList.remove("active");
+   fahrenheit.classList.add("active");
+   let nowTemp = document.querySelector("#now-temp");
+   nowTemp.innerHTML = Math.round(fahrenheitTemp);
 }
-let nowTemp = document.querySelector("#now-temp");
+
+let fahrenheitTemp = null;
 let celcius = document.querySelector("#celcius");
 celcius.addEventListener("click", celConversion);
 
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", fahConversion);
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", fahConversion);
+
+search("San-Diego");

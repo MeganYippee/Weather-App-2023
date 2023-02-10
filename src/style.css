@@ -13,10 +13,6 @@ form {
    position: relative;
    top: 10px;
 }
-i {
-    color: #66bfbf;
-}
-
 ul {
    list-style: none;
 }
@@ -55,6 +51,13 @@ a {
 }
 .main-icon {
    text-align: center;
+}
+.active {
+   color: #66bfbf;
+   cursor: default;
+}
+.active:hover {
+   text-decoration: none;
 }
 .forecast {
    margin: 0 auto;
