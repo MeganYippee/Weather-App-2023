@@ -49,7 +49,15 @@ let time = document.querySelector("#time");
 time.innerHTML = `${hour}:${minute}`;
 
 //Weather API
+function getForecast(coordinates) {
+   let apiKey = `c4e498a3faf187722534t4baf80f1o62`;
+   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
+   console.log(apiUrl);
+   axios.get(apiUrl).then(displayForecast);
+}
+
 function searchWeather(response) {
+   console.log(response);
    let tempResponse = Math.round(response.data.temperature.current);
    let nowTemp = document.querySelector("#now-temp");
    let icon = document.querySelector("#now-icon");
@@ -71,6 +79,8 @@ function searchWeather(response) {
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
    );
    icon.setAttribute("alt", response.data.condition.icon);
+
+   getForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -131,12 +141,12 @@ function fahConversion(event) {
 
 function displayForecast() {
    let forecastElement = document.querySelector("#forecast");
-   let day = ["Mon", "Tues", "Wed"];
+   let day = ["Mon", "Tues", "Wed", "Thurs"];
    let forecastHTML = `<div class="row">`;
    day.forEach(function (day) {
       forecastHTML =
          forecastHTML +
-         `<div class="col-2"> <span>${day}</span>
+         `<div class="col-3"> <span>${day}</span>
    <p class="col">55°F <i class="fa-solid fa-sun fa-beat"></i></p></div>`;
    });
    forecastHTML = forecastHTML + `</div>`;
