@@ -129,6 +129,20 @@ function fahConversion(event) {
    nowTemp.innerHTML = Math.round(fahrenheitTemp);
 }
 
+function displayForecast() {
+   let forecastElement = document.querySelector("#forecast");
+   let day = ["Mon", "Tues", "Wed"];
+   let forecastHTML = `<div class="row">`;
+   day.forEach(function (day) {
+      forecastHTML =
+         forecastHTML +
+         `<div class="col-2"> <span>${day}</span>
+   <p class="col">55°F <i class="fa-solid fa-sun fa-beat"></i></p></div>`;
+   });
+   forecastHTML = forecastHTML + `</div>`;
+   forecastElement.innerHTML = forecastHTML;
+}
+
 let fahrenheitTemp = null;
 let celcius = document.querySelector("#celcius");
 celcius.addEventListener("click", celConversion);
@@ -137,3 +151,4 @@ let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", fahConversion);
 
 search("San-Diego");
+displayForecast();
