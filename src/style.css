@@ -60,9 +60,16 @@ a {
    text-decoration: none;
 }
 .forecast {
+   font-size: 20px;
    margin: 0 auto;
    text-align: center;
-   max-width: 400px;
+   max-width: 550px;
+}
+.forecastTemp{
+font-size: 17px;
+}
+.max{
+   color: #ffae18;
 }
 #current-location {
    padding: 5px 10px;
