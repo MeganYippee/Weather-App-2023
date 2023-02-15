@@ -68,7 +68,7 @@ a {
 .forecastTemp{
 font-size: 17px;
 }
-.max{
+#max{
    color: #ffae18;
 }
 #current-location {

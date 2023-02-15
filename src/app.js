@@ -147,7 +147,7 @@ function displayForecast(response) {
          forecastHTML +
          `<div class="col-3">
          <span class="forecastDay">${day}</span>
-         <p class="col forecastTemp"><i class="fa-solid fa-sun fa-beat"></i> <span class="max"> 55°</span>  50°</p>
+         <p class="col forecastTemp"><i class="fa-solid fa-sun fa-beat"></i> <span id="max"> 55°</span>  <span id="min">50°</span></p>
          </div>`;
    });
    forecastHTML = forecastHTML + `</div>`;
