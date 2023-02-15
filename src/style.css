@@ -68,6 +68,9 @@ a {
 .forecastTemp{
 font-size: 17px;
 }
+.forecastIcon {
+   max-width: 60px;
+}
 #max{
    color: #ffae18;
 }

@@ -48,6 +48,14 @@ let minute = pad(now.getMinutes());
 let time = document.querySelector("#time");
 time.innerHTML = `${hour}:${minute}`;
 
+function formatForecast(timestamp) {
+   let date = new Date(timestamp * 1000);
+   let day = date.getDay();
+   let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
+   return days[day];
+}
+
 //Weather API
 function getForecast(coordinates) {
    let apiKey = `c4e498a3faf187722534t4baf80f1o62`;
@@ -138,17 +146,30 @@ function fahConversion(event) {
 //
 
 function displayForecast(response) {
+   console.log(response);
    let forecast = response.data.daily;
    let forecastElement = document.querySelector("#forecast");
-   let day = ["Mon", "Tues", "Wed", "Thurs"];
    let forecastHTML = `<div class="row">`;
-   day.forEach(function (day) {
-      forecastHTML =
-         forecastHTML +
-         `<div class="col-3">
-         <span class="forecastDay">${day}</span>
-         <p class="col forecastTemp"><i class="fa-solid fa-sun fa-beat"></i> <span id="max"> 55°</span>  <span id="min">50°</span></p>
+   forecast.forEach(function (forecastDay, index) {
+      if (index < 4) {
+         forecastHTML =
+            forecastHTML +
+            `<div class="col-3">
+         <span class="forecastDay">${formatForecast(forecastDay.time)}
+         </span>
+         <p class="col forecastTemp">
+         <img class="forecastIcon" src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+            forecastDay.condition.icon
+         }.png">
+         </img>
+         <div>
+          <span id="max">${Math.round(forecastDay.temperature.maximum)}°
+          </span><span id="min">${Math.round(forecastDay.temperature.minimum)}°
+          </span>
+          </div>
+         </p>
          </div>`;
+      }
    });
    forecastHTML = forecastHTML + `</div>`;
    forecastElement.innerHTML = forecastHTML;
